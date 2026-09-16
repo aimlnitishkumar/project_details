@@ -1,56 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Responsive Text</title>
+    <title>Responsive Documentation</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
 
         body {
             margin: 0;
-            padding: 20px;
+            padding: 30px 20px;
+
             font-family: Arial, sans-serif;
+
+            /* Optional */
+            background-color: #f5f5f5;
         }
 
-        pre {
-            white-space: pre-wrap;
-            overflow-wrap: break-word;
-            word-break: normal;
-
+        /* Main content */
+        .content {
             width: 100%;
-            max-width: 100%;
+            max-width: 800px;
 
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
+            /* This centers it on laptop/desktop */
+            margin: 0 auto;
 
+            background-color: white;
+
+            padding: 30px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .content p {
             margin: 0;
+
+            font-size: 16px;
+            line-height: 1.7;
+
+            overflow-wrap: break-word;
         }
 
+
+        /* 📱 Mobile */
         @media (max-width: 600px) {
+
             body {
-                padding: 15px;
+                padding: 15px 10px;
             }
 
-            pre {
+            .content {
+                padding: 18px;
+
+                border-radius: 8px;
+            }
+
+            .content p {
                 font-size: 15px;
-                line-height: 1.5;
+                line-height: 1.6;
             }
         }
+
     </style>
 </head>
 
 <body>
-
 <pre>
     <code>
+    <div class="content">
 
-Absolutely. Based on your diagram, this is much more than a normal Django CRUD application. You are essentially designing a CleanTech <br>MRV (Measurement, Reporting & Verification) <br>platform that collects energy telemetry, analyzes it, forecasts demand/supply, monitors battery health,<br>generates carbon/compliance metrics, and gives operators actionable alerts.
+
+
+        If you view on mobile, ensure that your smartphone is in desktop mode.
+
+Absolutely. Based on your diagram, this is much more than a normal Django CRUD application. You are <br>essentially designing a CleanTech <br>MRV (Measurement, Reporting & Verification) <br>platform that collects energy telemetry, analyzes it, forecasts demand/supply, monitors battery health,<br>generates carbon/compliance metrics, and gives operators actionable alerts.
 
 The important thing is to build it in a way that starts simple enough for you to develop, <br>but can later scale to thousands of tenants, millions of meter readings, and ML workloads.
 
@@ -765,7 +793,7 @@ Temperature normal
 Temperature warning
 Temperature critical
 
-The exact thresholds should be based on the specific battery technology/manufacturer rather than hard-coded generically.
+The exact thresholds should be based on the specific battery technology/manufacturer rather than hard-coded <br>generically.
 
 20. Proactive Load-Shifting Alerts
 
@@ -1454,7 +1482,7 @@ Kubernetes
 ├── WebSocket pods
 └── Monitoring
 
-Kubernetes becomes useful when you need automated deployment, scaling, and service management across many containers.
+Kubernetes becomes useful when you need automated deployment, scaling, and service management across <br>many containers.
 
 Don't make Kubernetes your first problem.
 
@@ -1547,7 +1575,7 @@ Demand = 125 kW
 Solar = 105 kW
 Step 8 — Recommendation
 
-System determines that some eligible flexible load could potentially be shifted toward periods with higher renewable availability.
+System determines that some eligible flexible load could potentially be shifted toward periods with <br>higher renewable availability.
 
 Step 9 — Alert
 
@@ -1674,7 +1702,7 @@ Celery
 AWS
 Grafana
 
-all at once, you'll spend most of your time fighting infrastructure instead of building the actual application.
+all at once, you'll spend most of your time fighting infrastructure instead of building <br>the actual application.
 
 I'd build it in phases.
 
@@ -1960,7 +1988,7 @@ real measurements + temporal energy accounting + verification + forecasting + ac
 
 57. What I recommend you learn, in order
 
-Since you're currently working with Django, PostgreSQL/TimescaleDB and Python, I would follow this sequence:
+Since you're currently working with Django, PostgreSQL/TimescaleDB and Python, <br>I would follow this sequence:
 
 Backend
 1. Django
@@ -2063,7 +2091,7 @@ And finally:
              + advanced observability
 The key idea
 
-If I were designing this project with you, I would treat the architecture as three major systems working together:
+If I were designing this project with you, I would treat the architecture as three major <br>systems working together:
 
 ┌─────────────────────────────────────────────────────┐
 │                 CLEAN TECH PLATFORM                 │
@@ -2084,9 +2112,9 @@ Django is the central application/backend, TimescaleDB is the time-series data f
 And because you already started working with Django + TimescaleDB + EnergyReading, <br>you are actually at a very good starting point <br>for implementing the first piece: the telemetry/data platform.
 
 The best next step is not to start with ML or React. Build the backend foundation first: <br>Django project → multi-tenant models → EnergyReading → <br>TimescaleDB hypertable → DRF APIs → fake 15-minute meter data → dashboard API. <br>Once that works, the rest of the architecture has somewhere solid to plug into.
+
+    </div>
 </code>
 </pre>
-
-
 </body>
 </html>
