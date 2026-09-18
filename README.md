@@ -5,4 +5,6 @@ A scalable infrastructure-as-a-service platform designed to automate verifiable 
 
 View : https://project-details-view.vercel.app/
 
+![Website Screenshot](image.png)
+
 Last Updated : 18-09-2026 19:38
