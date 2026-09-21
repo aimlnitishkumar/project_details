@@ -1,2120 +1,2370 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
 
-    <title>Responsive Documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
+  <meta name="description"
+    content="CleanTech Predictive Green Energy MRV Engine Project Documentation">
 
-        * {
-            box-sizing: border-box;
-        }
+  <title>CleanTech | Project Documentation</title>
 
-        body {
-            margin: 0;
-            padding: 30px 20px;
+  <style>
 
-            font-family: Arial, sans-serif;
+    /* ================================
+       GLOBAL STYLES
+    ================================= */
 
-            /* Optional */
-            background-color: #f5f5f5;
-        }
+    :root {
+      --green: #0b6b4f;
+      --dark-green: #064535;
+      --light-green: #eaf6ef;
+      --text: #253244;
+      --muted: #64748b;
+      --border: #dce7e1;
+      --white: #ffffff;
+      --background: #f3f7f5;
+    }
 
-        /* Main content */
-        .content {
-            width: 100%;
-            max-width: 800px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-            /* This centers it on laptop/desktop */
-            margin: 0 auto;
+    html {
+      scroll-behavior: smooth;
+    }
 
-            background-color: white;
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
 
-            padding: 30px;
+    a {
+      color: var(--green);
+      text-decoration: none;
+    }
 
-            border-radius: 10px;
+    .container {
+      width: min(1100px, calc(100% - 32px));
+      margin: auto;
+    }
 
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-        }
+    /* ================================
+       HEADER
+    ================================= */
 
-        .content p {
-            margin: 0;
+    header {
+      background: linear-gradient(
+        135deg,
+        var(--dark-green),
+        var(--green)
+      );
 
-            font-size: 16px;
-            line-height: 1.7;
+      color: white;
+      padding: 42px 0;
+    }
 
-            overflow-wrap: break-word;
-        }
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
 
+    .label {
+      color: #b9f1d4;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
 
-        /* 📱 Mobile */
-        @media (max-width: 600px) {
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.2;
+      margin: 10px 0 16px;
+    }
 
-            body {
-                padding: 15px 10px;
-            }
+    header p {
+      max-width: 850px;
+      color: #e2f6eb;
+    }
 
-            .content {
-                padding: 18px;
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
 
-                border-radius: 8px;
-            }
+    .badges span {
+      border: 1px solid #ffffff55;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.85rem;
+      color: white;
+    }
 
-            .content p {
-                font-size: 15px;
-                line-height: 1.6;
-            }
-        }
+    /* ================================
+       MAIN LAYOUT
+    ================================= */
 
-    </style>
+    .layout {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 24px;
+      margin: 26px auto 40px;
+    }
+
+    aside {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      height: max-content;
+      position: sticky;
+      top: 18px;
+    }
+
+    aside h2 {
+      font-size: 1rem;
+      color: var(--dark-green);
+      margin-bottom: 10px;
+    }
+
+    aside a {
+      display: block;
+      color: #536174;
+      font-size: 0.9rem;
+      padding: 5px 0;
+    }
+
+    aside a:hover {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    main {
+      min-width: 0;
+    }
+
+    section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 18px #123c2810;
+      scroll-margin-top: 20px;
+    }
+
+    h2 {
+      color: var(--dark-green);
+      font-size: 1.55rem;
+      border-bottom: 2px solid var(--light-green);
+      padding-bottom: 9px;
+      margin-bottom: 15px;
+    }
+
+    h3 {
+      color: #18563f;
+      font-size: 1.12rem;
+      margin: 20px 0 7px;
+    }
+
+    p {
+      margin-bottom: 12px;
+    }
+
+    ul,
+    ol {
+      padding-left: 23px;
+      margin: 8px 0 14px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* ================================
+       NOTES AND CARDS
+    ================================= */
+
+    .note {
+      background: #effaf4;
+      border-left: 5px solid var(--green);
+      padding: 14px 16px;
+      border-radius: 7px;
+      margin: 16px 0;
+    }
+
+    .warning {
+      background: #fff8e7;
+      border-left: 5px solid #c78318;
+      padding: 14px 16px;
+      border-radius: 7px;
+      margin: 16px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 16px;
+      background: #fbfefd;
+    }
+
+    .card h3 {
+      margin: 0 0 5px;
+    }
+
+    .card p {
+      font-size: 0.94rem;
+      color: #526174;
+      margin: 0;
+    }
+
+    /* ================================
+       SYSTEM ARCHITECTURE
+    ================================= */
+
+    .architecture {
+      text-align: center;
+      background: #f7fbf9;
+      border: 1px dashed #9acbb4;
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .layer {
+      background: white;
+      border: 1px solid #b9d8c8;
+      border-radius: 8px;
+      padding: 11px;
+      margin: 9px auto;
+      max-width: 650px;
+    }
+
+    .arrow {
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    /* ================================
+       FLOW STEPS
+    ================================= */
+
+    .flow {
+      display: grid;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .step {
+      display: flex;
+      gap: 12px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 12px;
+    }
+
+    .number {
+      background: var(--green);
+      color: white;
+      border-radius: 50%;
+      width: 29px;
+      height: 29px;
+      min-width: 29px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .step strong {
+      display: block;
+      color: var(--dark-green);
+    }
+
+    /* ================================
+       TABLES
+    ================================= */
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 570px;
+      margin: 12px 0;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--light-green);
+      color: var(--dark-green);
+    }
+
+    /* ================================
+       FORMULAS
+    ================================= */
+
+    .formula {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 13px;
+      text-align: center;
+      font-weight: 700;
+      border-radius: 7px;
+      margin: 13px 0;
+    }
+
+    /* ================================
+       FOOTER AND PRINT BUTTON
+    ================================= */
+
+    footer {
+      background: var(--dark-green);
+      color: #d9f5e7;
+      text-align: center;
+      padding: 22px;
+    }
+
+    .print {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: var(--green);
+      color: white;
+      border: 0;
+      border-radius: 24px;
+      padding: 11px 17px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px #0002;
+    }
+
+    .print:hover {
+      background: var(--dark-green);
+    }
+
+    /* ================================
+       RESPONSIVE DESIGN
+    ================================= */
+
+    @media (max-width: 850px) {
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
+      }
+
+      aside nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0 15px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media (max-width: 520px) {
+
+      section {
+        padding: 20px;
+      }
+
+      .container {
+        width: calc(100% - 22px);
+      }
+
+      aside nav {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+    }
+
+    /* ================================
+       PRINT / PDF STYLING
+    ================================= */
+
+    @media print {
+
+      @page {
+        size: A4;
+        margin: 15mm;
+      }
+
+      body {
+        background: white;
+        font-size: 11pt;
+        line-height: 1.5;
+      }
+
+      header {
+        background: white !important;
+        color: black;
+        padding: 0 0 18px;
+        border-bottom: 2px solid black;
+      }
+
+      header p,
+      .label {
+        color: #333;
+      }
+
+      .layout {
+        display: block;
+        margin-top: 12px;
+      }
+
+      aside,
+      .print {
+        display: none !important;
+      }
+
+      section {
+        box-shadow: none;
+        border: 0;
+        border-radius: 0;
+        padding: 0;
+        margin-bottom: 22px;
+      }
+
+      h2 {
+        color: black;
+        font-size: 17pt;
+        break-after: avoid;
+      }
+
+      h3 {
+        break-after: avoid;
+      }
+
+      .card,
+      .step,
+      .architecture,
+      .note,
+      .warning {
+        break-inside: avoid;
+      }
+
+      footer {
+        background: white;
+        color: black;
+        border-top: 1px solid black;
+      }
+
+    }
+
+  </style>
+
 </head>
 
 <body>
-<pre>
-    <code>
-    <div class="content">
 
-
-
-        <h3 style="color: red;">If you view on smartphone, ensure that your browser is in desktop mode.</h3>
-
-Absolutely. Based on your diagram, this is much more than a normal Django CRUD application. You are <br>essentially designing a CleanTech <br>MRV (Measurement, Reporting & Verification) <br>platform that collects energy telemetry, analyzes it, forecasts demand/supply, monitors battery health,<br>generates carbon/compliance metrics, and gives operators actionable alerts.
-
-The important thing is to build it in a way that starts simple enough for you to develop, <br>but can later scale to thousands of tenants, millions of meter readings, and ML workloads.
-
-1. First: What is the actual application?
-
-Your system can be thought of as:
-
-A web-based Clean Energy Monitoring, MRV, Forecasting and Decision-Support Platform.
-
-Imagine a company has:
-
-Solar panels
-Electricity consumption
-Grid connection
-Battery storage
-Smart meters
-Multiple buildings/sites
-Weather information
-
-Your application continuously receives this information and answers:
-
-"What is happening with our energy?"
-
-For example:
-
-Building A
-
-Solar generation       = 80 kW
-Building consumption   = 110 kW
-Battery discharge      = 10 kW
-Grid import             = 20 kW
-
-Then your system can determine:
-
-How much energy was generated?
-How much was consumed?
-How much came from the grid?
-How much renewable energy was actually matched with consumption?
-How much carbon was emitted?
-Is the battery operating safely?
-What will tomorrow's demand look like?
-What will tomorrow's solar generation look like?
-Should the user shift a load from 2 PM to 12 PM?
-Is there a potential carbon/MRV compliance deficit?
-What should be included in the audit report?
-
-That is the real application behind your diagram.
-
-2. High-level architecture
-
-I would design it approximately like this:
-
-                  USERS / OPERATORS
-                         │
-                         ▼
-              ┌─────────────────────┐
-              │   React / Next.js   │
-              │     Dashboard       │
-              └──────────┬──────────┘
-                         │ HTTPS
-                         ▼
-              ┌─────────────────────┐
-              │   Nginx / Load      │
-              │      Balancer       │
-              └──────────┬──────────┘
-                         │
-                         ▼
-        ┌─────────────────────────────────┐
-        │          Django + DRF           │
-        │                                 │
-        │ Authentication                  │
-        │ Users / Tenants                 │
-        │ Sites                           │
-        │ Energy Data API                 │
-        │ Reports                         │
-        │ Alerts                          │
-        │ MRV calculations                │
-        └───────┬───────────┬─────────────┘
-                │           │
-        ┌───────▼─────┐ ┌──▼─────────────┐
-        │ PostgreSQL  │ │     Redis      │
-        │ TimescaleDB │ │ Cache / Queue  │
-        └─────────────┘ └───────┬────────┘
-                                │
-                         ┌──────▼──────┐
-                         │   Celery    │
-                         │ Background  │
-                         │   Workers   │
-                         └───┬────┬────┘
-                             │    │
-                  ┌──────────┘    └──────────┐
-                  ▼                           ▼
-          ML Forecasting                Report Engine
-          Service                       / MRV Engine
-
-Smart Meters
-     │
-     ▼
-MQTT / IoT Gateway
-     │
-     ▼
-Message Broker
-     │
-     ▼
-Data Ingestion Service
-     │
-     ▼
-TimescaleDB
-
-Later, if your scale becomes very large:
-
-Smart Meters
-     ↓
-MQTT
-     ↓
-Kafka
-     ↓
-Ingestion Workers
-     ↓
-TimescaleDB
-
-                    ┌── Django API
-                    ├── ML services
-                    ├── Analytics
-                    └── Reporting
-3. Recommended technology stack
-
-Here is the stack I would recommend.
-
-Layer	Technology
-Frontend	React / Next.js
-Backend	Django
-API	Django REST Framework
-Authentication	JWT + refresh tokens / OAuth2
-Main database	PostgreSQL
-Time-series data	TimescaleDB
-Cache	Redis
-Background jobs	Celery
-IoT protocol	MQTT
-MQTT broker	EMQX / Mosquitto
-Message streaming	Kafka later
-ML	Python + scikit-learn / XGBoost / PyTorch
-ML API	FastAPI
-File storage	S3-compatible object storage
-Reports	Python + WeasyPrint/ReportLab
-Charts	Plotly / Recharts / ECharts
-Monitoring	Prometheus + Grafana
-Error tracking	Sentry
-Containers	Docker
-Reverse proxy	Nginx
-CI/CD	GitHub Actions
-Cloud	AWS / Azure / GCP
-Container orchestration	Kubernetes later
-Infrastructure	Terraform later
-
-Important: Don't install all of these on day one.
-
-You should build the first version with roughly:
-
-Django
-Django REST Framework
-PostgreSQL + TimescaleDB
-Redis
-Celery
-React
-Docker
-
-Then introduce Kafka, Kubernetes, FastAPI etc. when there is an actual reason.
-
-4. Let's understand every component
-A. Django — your main backend
-
-Django should be the central business application.
-
-It handles:
-
-Users
-Tenants
-Sites
-Meters
-Energy readings
-Reports
-Alerts
-Settings
-Permissions
-MRV calculations
-Dashboard APIs
-
-For example:
-
-class Tenant(models.Model):
-    name = models.CharField(max_length=200)
-class Site(models.Model):
-    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
-class EnergyReading(models.Model):
-    site = models.ForeignKey(Site, on_delete=models.CASCADE)
-    timestamp = models.DateTimeField()
-    grid_power = models.FloatField()
-    solar_power = models.FloatField()
-    battery_power = models.FloatField()
-    load_power = models.FloatField()
-
-This becomes the foundation of your application.
-
-5. Django REST Framework
-
-Your frontend should not directly access your database.
-
-Instead:
-
-React
-  ↓
-REST API
-  ↓
-Django
-  ↓
-Database
-
-For example:
-
-GET /api/sites/
-GET /api/sites/15/energy/
-GET /api/sites/15/forecast/
-GET /api/sites/15/alerts/
-GET /api/sites/15/mrv-report/
-
-Your React dashboard consumes these APIs.
-
-6. PostgreSQL + TimescaleDB
-
-This is one of the most important decisions for your system.
-
-Your application has data like:
-
-10:00 → 52.3 kW
-10:15 → 55.7 kW
-10:30 → 61.1 kW
-10:45 → 59.4 kW
-
-And potentially:
-
-1,000 meters
-×
-96 readings/day
-×
-365 days
-
-That becomes tens of millions of time-series records.
-
-Normal PostgreSQL can handle a lot, but TimescaleDB is specifically useful for time-series workloads.
-
-Your EnergyReading can become a hypertable based on:
-
-timestamp
-
-Conceptually:
-
-EnergyReading
-────────────────────────────
-timestamp
-tenant_id
-site_id
-meter_id
-grid_power
-solar_power
-battery_power
-load_power
-
-Then you can efficiently query:
-
-SELECT *
-FROM energy_reading
-WHERE timestamp >= ...
-AND timestamp < ...;
-7. Why you need Redis
-
-Redis should not be your primary database.
-
-Use it for:
-
-Caching
-
-Suppose your dashboard repeatedly requests:
-
-Today's energy statistics
-
-Instead of calculating them every time:
-
-React
- ↓
-Django
- ↓
-Redis
- ↓
-cached result
-
-You can cache:
-
-today_energy
-monthly_energy
-current_power
-forecast
-dashboard_summary
-8. Celery — extremely important
-
-Your system will have operations that should not block a web request.
-
-For example:
-
-Generate 6-month report
-
-Don't do:
-
-Browser
- ↓
-Django
- ↓
-calculate 6 months
- ↓
-generate PDF
- ↓
-browser waits 60 seconds
-
-Instead:
-
-Browser
- ↓
-Django
- ↓
-Create background task
- ↓
-Return "Report is being generated"
-          │
-          ▼
-        Celery
-          │
-          ▼
-    Generate report
-          │
-          ▼
-      Save PDF
-
-Celery can handle:
-
-Daily calculations
-Forecast generation
-Report generation
-Email notifications
-Alert processing
-Data aggregation
-Carbon calculations
-Scheduled jobs
-9. IoT / Smart Meter architecture
-
-This part is extremely important.
-
-Your diagram says:
-
-Smart Meters / IoT Sensors → Sends live meter readings
-
-You shouldn't normally have every sensor directly calling a Django HTTP endpoint at high frequency.
-
-Instead:
-
-Smart Meter
-     │
-     │ MQTT
-     ▼
- MQTT Broker
-     │
-     ▼
-IoT ingestion service
-     │
-     ▼
-TimescaleDB
-MQTT
-
-MQTT is commonly used for IoT because it is lightweight.
-
-A meter could publish:
-
-energy/site123/meter456
-
-with:
-
-{
-    "timestamp": "2026-09-16T14:30:00Z",
-    "grid_power": 120.5,
-    "solar_power": 85.2,
-    "battery_power": 20.0
-}
-
-Your ingestion service receives it and stores it.
-
-10. MQTT Broker
-
-You can use:
-
-Mosquitto
-
-Great for learning and development.
-
-or:
-
-EMQX
-
-More suitable when you're building a serious IoT system.
-
-Architecture:
-
-Meter 1 ─┐
-Meter 2 ─┤
-Meter 3 ─┤
-Meter 4 ─┤
-         ▼
-      EMQX
-         │
-         ▼
- Ingestion Service
-         │
-         ▼
- TimescaleDB
-11. Kafka — don't start with it
-
-Kafka is useful when your system becomes large.
-
-For example:
-
-10,000 smart meters
-        ↓
-millions of messages
-        ↓
-       Kafka
-        ↓
- ┌──────┼────────┐
- ▼      ▼        ▼
-DB     ML      Alerts
-
-Kafka allows different consumers to independently process the same stream.
-
-But for your first version:
-
-MQTT → Django/worker → TimescaleDB
-
-is enough.
-
-Later:
-
-MQTT → Kafka → consumers
-12. The ML Forecasting Engine
-
-This is another major component.
-
-Your diagram has:
-
-Machine Learning Forecasting Engine
-
-Its purpose is to predict:
-
-Demand
-What will electricity consumption be
-tomorrow at 2:00 PM?
-
-and:
-
-Supply
-How much solar power might be generated
-tomorrow at 2:00 PM?
-
-Example:
-
-Historical data
-
-Monday 2 PM       100 kW
-Tuesday 2 PM      110 kW
-Wednesday 2 PM    105 kW
-Thursday 2 PM     115 kW
-
-             ↓
-
-        ML Model
-
-             ↓
-
-Friday 2 PM ≈ 112 kW
-13. What data goes into ML?
-
-Your model could use:
-
-Historical electricity consumption
-Historical solar generation
-Time of day
-Day of week
-Month
-Holiday
-Temperature
-Humidity
-Cloud cover
-Solar irradiance
-Previous day's consumption
-Previous week's consumption
-
-Example:
-
-Input
-
-temperature = 31°C
-humidity = 55%
-cloud_cover = 20%
-hour = 14
-day = Tuesday
-previous_load = 105 kW
-
-              ↓
-
-           ML Model
-
-              ↓
-
-Predicted demand = 112 kW
-14. Which ML technology?
-
-Start with:
-
-Python
-Pandas
-NumPy
-scikit-learn
-
-Then experiment with:
-
-XGBoost
-LightGBM
-PyTorch
-
-For your first forecasting model, don't immediately jump into deep learning.
-
-A tree-based model or classical time-series approach can give you a very good baseline.
-
-15. Should ML live inside Django?
-
-I would separate it eventually.
-
-Instead of:
-
-Django
- └── ML code
-
-use:
-
-Django
-   │
-   │ HTTP/gRPC
-   ▼
-ML Service
-   │
-   ▼
-Model
-
-You can build the ML service using FastAPI.
-
-For example:
-
-POST /predict/demand
-
-Input:
-
-{
-    "site_id": 10,
-    "temperature": 31,
-    "humidity": 55,
-    "hour": 14
-}
-
-Response:
-
-{
-    "predicted_demand_kw": 112.4
-}
-
-Django can then expose this result to your frontend.
-
-16. 15-minute Temporal Matching
-
-This is one of the most interesting parts of your system.
-
-Suppose:
-
-10:00–10:15
-Consumption = 100 kWh
-Solar       = 80 kWh
-
-Then:
-
-Renewable matched = 80 kWh
-Grid              = 20 kWh
-
-At:
-
-10:15–10:30
-Consumption = 90 kWh
-Solar       = 95 kWh
-
-Then:
-
-Renewable matched = 90 kWh
-Excess solar      = 5 kWh
-
-Your system performs this calculation for every 15-minute interval.
-
-This allows much more accurate renewable-energy accounting than simply saying:
-
-Total solar this month = 20,000 kWh
-Total consumption = 20,000 kWh
-
-because the energy may have been generated at completely different times.
-
-17. MRV — Measurement, Reporting, Verification
-
-This is the heart of your application.
-
-Measurement
-
-Collect actual data:
-
-Meter readings
-Solar
-Grid
-Battery
-Weather
-Reporting
-
-Produce:
-
-Daily report
-Monthly report
-Annual report
-Carbon report
-Energy report
-Audit report
-Verification
-
-Check whether:
-
-Data is complete
-Data is valid
-Data has gaps
-Values are abnormal
-Meter readings are consistent
-Calculations are reproducible
-18. Data validation
-
-Suppose your meter sends:
-
-14:00 → 100 kW
-14:15 → 102 kW
-14:30 → -999999 kW
-
-Your system shouldn't blindly accept it.
-
-You need validation rules.
-
-For example:
-
-power < allowed minimum → suspicious
-
-power > allowed maximum → suspicious
-
-timestamp duplicate → duplicate
-
-missing 15-minute interval → data gap
-
-You can create:
-
-DataQualityIssue
-
-with:
-
-site
-meter
-timestamp
-issue_type
-severity
-description
-19. Battery monitoring
-
-Your diagram contains:
-
-Monitor Battery Storage & Thermal Health
-
-Suppose battery sensors provide:
-
-SOC = 74%
-Voltage = 410 V
-Temperature = 37°C
-Current = 42 A
-
-Your system can monitor:
-
-State of Charge
-Temperature
-Voltage
-Current
-Charge/discharge rate
-
-Then define operational thresholds.
-
-For example:
-
-Temperature normal
-Temperature warning
-Temperature critical
-
-The exact thresholds should be based on the specific battery technology/manufacturer rather than hard-coded <br>generically.
-
-20. Proactive Load-Shifting Alerts
-
-This is where your application becomes a decision-support system, rather than just a monitoring dashboard.
-
-Suppose your forecast says:
-
-12 PM
-
-Solar = 200 kW
-Demand = 100 kW
-
-Excess renewable energy
-
-But:
-
-6 PM
-
-Solar = 10 kW
-Demand = 180 kW
-
-Your system might identify flexible loads such as:
-
-EV charging
-Water heating
-HVAC
-Industrial processes
-Battery charging
-
-and produce:
-
-"Consider shifting eligible flexible loads toward the high-renewable period."
-
-The application should distinguish recommendations from automatically controlling equipment unless <br>you explicitly build a control system and safety layer.
-
-21. Carbon calculation
-
-You can calculate emissions based on:
-
-Grid energy consumed
-×
-applicable emissions factor
-
-For example, conceptually:
-
-Grid consumption = 1000 kWh
-
-Emission factor = X kg CO₂e/kWh
-
-Emissions = 1000 × X
-
-Your actual emissions-factor source and version should be stored alongside the calculation.
-
-For auditability, don't just store:
-
-carbon = 500
-
-Store something closer to:
-
-energy_consumption
-emission_factor
-factor_source
-factor_version
-calculation_timestamp
-calculation_method
-result
-
-That makes the result reproducible.
-
-22. Carbon Deficit Heatmap
-
-Your diagram ends with:
-
-Generate Carbon Deficit Heatmap
-
-Imagine:
-
-              Monday Tuesday Wednesday Thursday Friday
-
-00:00           🟢      🟢       🟢        🟢      🟢
-04:00           🟢      🟢       🟢        🟡      🟢
-08:00           🟡      🟡       🔴        🟡      🔴
-12:00           🟢      🟢       🟢        🟢      🟢
-16:00           🟡      🔴       🟡        🔴      🟡
-20:00           🔴      🔴       🔴        🟡      🔴
-
-The exact color thresholds are domain-specific, but conceptually:
-
-Green = good matching / low deficit
-Yellow = moderate deficit
-Red = high deficit
-
-The user can click:
-
-Tuesday 20:00
-
-and see:
-
-Demand             180 kW
-Renewable supply    20 kW
-Grid                160 kW
-Carbon intensity     ...
-Deficit              ...
-23. Audit Reports
-
-Your system administrator/operator can click:
-
-Reports
-
-and get:
-
-MRV Monthly Report
-
-Tenant:
-ABC Manufacturing
-
-Period:
-August 2026
-
-Total Consumption:
-1,250,000 kWh
-
-Solar Generation:
-540,000 kWh
-
-Grid Import:
-710,000 kWh
-
-Renewable Matching:
-...
-
-Data Completeness:
-...
-
-Carbon Emissions:
-...
-
-Carbon Deficit:
-...
-
-Data Quality Issues:
-...
-
-Then:
-
-Generate PDF
-
-and your backend creates the report.
-
-24. User authentication
-
-Your diagram includes:
-
-Manage Enterprise User Authentication & Settings
-
-You'll need a hierarchy.
-
-For example:
-
-Organization
-     │
-     ├── Admin
-     │
-     ├── Operator
-     │
-     ├── Analyst
-     │
-     └── Viewer
-
-And potentially:
-
-Organization
-   │
-   ├── Site A
-   │    ├── Meter 1
-   │    └── Meter 2
-   │
-   ├── Site B
-   │    ├── Meter 3
-   │    └── Meter 4
-   │
-   └── Site C
-
-This is a multi-tenant architecture.
-
-25. Multi-tenancy
-
-This is very important if your application is intended for enterprises.
-
-Imagine:
-
-Company A
-Company B
-Company C
-
-Company A must never see:
-
-Company B's energy data
-
-Your database records should therefore be associated with an organization/tenant.
-
-Conceptually:
-
-Organization
-     ↓
-Site
-     ↓
-Meter
-     ↓
-EnergyReading
-
-Every API request must enforce tenant authorization.
-
-26. Frontend
-
-For a serious application, I would use:
-
-React
-
-or:
-
-Next.js
-
-Your dashboard might look like:
-
-┌───────────────────────────────────────────────┐
-│ CleanTech MRV                    Admin ▼      │
-├────────────┬──────────────────────────────────┤
-│ Dashboard  │                                  │
-│ Sites      │   Current Power                  │
-│ Meters     │       482 kW                     │
-│ Energy     │                                  │
-│ Forecast   │   ┌──────────────────────────┐   │
-│ Battery   │   │ Energy chart             │   │
-│ MRV       │   │                          │   │
-│ Reports   │   └──────────────────────────┘   │
-│ Alerts    │                                  │
-│ Settings  │   Solar    Grid    Battery       │
-│           │   320kW    142kW    20kW         │
-└───────────┴──────────────────────────────────┘
-27. Dashboard pages
-
-I would divide the application into these pages.
-
-1. Login
-Email
-Password
-2FA
-2. Dashboard
-Current energy
-Solar
-Grid
-Battery
-Consumption
-Carbon
-Alerts
-3. Sites
-All sites
-Site details
-Meters
-Devices
-4. Live Energy
-Real-time readings
-5. Historical Energy
-Hour
-Day
-Week
-Month
-Year
-6. Forecast
-Demand forecast
-Solar forecast
-7. Battery
-SOC
-Temperature
-Health
-Events
-8. MRV
-Data completeness
-Temporal matching
-Carbon calculations
-Verification
-9. Carbon
-Emissions
-Carbon deficit
-Heatmap
-10. Alerts
-Battery warning
-Data gap
-High demand
-Load shifting recommendation
-11. Reports
-Generate
-Download
-History
-12. Settings
-Users
-Roles
-Notifications
-Sites
-Thresholds
-28. Suggested Django project structure
-
-Don't put everything inside one giant views.py.
-
-I'd structure it approximately like:
-
-cleantech/
-│
-├── manage.py
-│
-├── config/
-│   ├── settings/
-│   │   ├── base.py
-│   │   ├── development.py
-│   │   └── production.py
-│   ├── urls.py
-│   └── celery.py
-│
-├── accounts/
-│   ├── models.py
-│   ├── serializers.py
-│   ├── views.py
-│   └── permissions.py
-│
-├── tenants/
-│   ├── models.py
-│   ├── serializers.py
-│   └── views.py
-│
-├── sites/
-│   ├── models.py
-│   ├── serializers.py
-│   └── views.py
-│
-├── meters/
-│   ├── models.py
-│   ├── serializers.py
-│   └── views.py
-│
-├── energy/
-│   ├── models.py
-│   ├── services.py
-│   ├── tasks.py
-│   └── calculations.py
-│
-├── mrv/
-│   ├── models.py
-│   ├── calculations.py
-│   ├── validators.py
-│   └── reports.py
-│
-├── forecasting/
-│   ├── services.py
-│   ├── models.py
-│   └── tasks.py
-│
-├── battery/
-│   ├── models.py
-│   ├── monitoring.py
-│   └── alerts.py
-│
-├── alerts/
-│   ├── models.py
-│   └── services.py
-│
-├── reports/
-│   ├── models.py
-│   ├── generators.py
-│   └── tasks.py
-│
-└── iot/
-    ├── mqtt.py
-    ├── consumers.py
-    └── ingestion.py
-
-This separation will help enormously as the project grows.
-
-29. Database design
-
-A simplified version might look like:
-
-Organization
-     │
-     ├──────────────┐
-     ▼              ▼
-   User            Site
-                    │
-                    ▼
-                  Meter
-                    │
-                    ▼
-              EnergyReading
-
-Additional tables:
-
-Organization
-User
-Role
-Site
-Meter
-Device
-EnergyReading
-SolarReading
-BatteryReading
-WeatherReading
-Forecast
-MRVCalculation
-CarbonCalculation
-DataQualityIssue
-Alert
-LoadShiftRecommendation
-Report
-AuditLog
-30. One important database principle
-
-Don't store everything in one table.
-
-Bad:
-
-EnergyEverything
-
-with:
-
-user
-site
-meter
-weather
-battery
-solar
-forecast
-carbon
-report
-...
-
-Instead, model relationships properly.
-
-For example:
-
-Site
- ↓
-Meter
- ↓
-EnergyReading
-
-and:
-
-Site
- ↓
-Battery
- ↓
-BatteryReading
-
-and:
-
-Site
- ↓
-Forecast
-31. Real-time dashboard
-
-For live readings, REST polling isn't always ideal.
-
-You could initially do:
-
-React
- ↓
-GET /api/live-energy/
- ↓
-every 10 seconds
-
-Later use:
-
-WebSocket
-
-architecture:
-
-Meter
- ↓
-MQTT
- ↓
-Backend
- ↓
-WebSocket
- ↓
-React Dashboard
-
-So if the meter sends:
-
-solar = 85 kW
-
-the dashboard can update almost immediately.
-
-For Django, you can use Django Channels for WebSockets.
-
-32. Object storage
-
-Reports and other large files should not live directly in your database.
-
-Use:
-
-Amazon S3
-
-or another S3-compatible object store.
-
-Database:
-
-report_id
-tenant_id
-created_at
-file_location
-
-Object storage:
-
-actual PDF
-
-This is much more scalable.
-
-33. Security architecture
-
-Because this is enterprise energy data, security should be designed from the beginning.
-
-Use:
-
-HTTPS
-JWT/session authentication
-Role-based permissions
-Tenant isolation
-Database encryption
-Secret management
-Audit logs
-Rate limiting
-Input validation
-API permissions
-
-And never put:
-
-SECRET_KEY
-DATABASE_PASSWORD
-JWT_SECRET
-AWS_SECRET
-
-directly into GitHub.
-
-Use:
-
-.env
-
-locally and a proper secret-management mechanism in production.
-
-34. Audit logging
-
-This is particularly important for an MRV system.
-
-You should know:
-
-Who changed what?
-When?
-What was the previous value?
-What was the new value?
-
-For example:
-
-User:
-operator@example.com
-
-Action:
-Changed emission factor
-
-Old:
-0.82
-
-New:
-0.79
-
-Time:
-2026-09-16 14:23 UTC
-
-This helps make your system auditable.
-
-35. Monitoring your own application
-
-You need to monitor the monitoring system.
-
-Use:
-
-Prometheus
-
-Collect:
-
-CPU
-Memory
-API latency
-Request count
-Celery queue size
-Database metrics
-IoT ingestion rate
-Grafana
-
-Visualize those metrics.
-
-Example:
-
-API requests/sec
-       │
-       │    ╭──╮
-       │ ╭──╯  ╰──╮
-       └────────────── time
-36. Docker
-
-Your development environment can contain:
-
-docker-compose.yml
-
-with:
-
-Django
-PostgreSQL + TimescaleDB
-Redis
-Celery
-MQTT
-Frontend
-
-For example:
-
-docker compose
-       │
-       ├── backend
-       ├── frontend
-       ├── postgres-timescale
-       ├── redis
-       └── mqtt
-
-This is a very good approach for your project.
-
-37. Production architecture
-
-Initially:
-
-                Internet
-                    │
-                    ▼
-                  Nginx
-                    │
-                    ▼
-             Django / DRF
-                    │
-       ┌────────────┼────────────┐
-       ▼            ▼            ▼
- PostgreSQL       Redis        Celery
- TimescaleDB                    Workers
-
-As the system grows:
-
-                         Internet
-                            │
-                            ▼
-                     Load Balancer
-                            │
-             ┌──────────────┼──────────────┐
-             ▼              ▼              ▼
-          Django          Django          Django
-          instance        instance        instance
-             │              │              │
-             └──────────────┼──────────────┘
-                            │
-                    PostgreSQL/TimescaleDB
-                            │
-                         Redis
-                            │
-                          Kafka
-                      ┌─────┼─────┐
-                      ▼     ▼     ▼
-                    ML    Alerts  Analytics
-38. Kubernetes — later
-
-You don't need Kubernetes to build your first version.
-
-But eventually:
-
-Kubernetes
-│
-├── Django pods
-├── Celery pods
-├── ML pods
-├── Ingestion pods
-├── WebSocket pods
-└── Monitoring
-
-Kubernetes becomes useful when you need automated deployment, scaling, and service management across <br>many containers.
-
-Don't make Kubernetes your first problem.
-
-39. CI/CD
-
-Use GitHub Actions.
-
-Whenever you push:
-
-git push
-    ↓
-GitHub Actions
-    ↓
-Run tests
-    ↓
-Run linting
-    ↓
-Build Docker image
-    ↓
-Deploy
-
-For example:
-
-main
- ↓
-Tests
- ↓
-Docker build
- ↓
-Production
-40. Your complete data flow
-
-Now let's connect your diagram into one real workflow.
-
-Step 1 — Smart meter
-
-Meter sends:
-
-{
-  "meter_id": 101,
-  "timestamp": "2026-09-16T14:15:00Z",
-  "load_kw": 120,
-  "solar_kw": 90,
-  "grid_kw": 30
-}
-Step 2 — MQTT
-Smart Meter
-     ↓
-MQTT
-     ↓
-EMQX
-Step 3 — Ingestion
-
-Your ingestion service validates:
-
-Is meter valid?
-Is timestamp valid?
-Is reading within acceptable bounds?
-Is this duplicate?
-Step 4 — TimescaleDB
-
-Store:
-
-EnergyReading
-Step 5 — Temporal matching
-
-Your MRV engine calculates:
-
-Load = 120
-Solar = 90
-
-Renewable matched = 90
-Grid = 30
-Step 6 — Carbon
-
-Calculate:
-
-Grid consumption
-×
-emission factor
-=
-CO₂e
-Step 7 — Forecast
-
-ML service predicts:
-
-Tomorrow 14:15
-
-Demand = 125 kW
-Solar = 105 kW
-Step 8 — Recommendation
-
-System determines that some eligible flexible load could potentially be shifted toward periods with <br>higher renewable availability.
-
-Step 9 — Alert
-
-Operator sees:
-
-⚠ High evening grid dependency expected
-Step 10 — Dashboard
-
-React displays:
-
-Current Load        120 kW
-Solar                90 kW
-Grid                  30 kW
-
-Tomorrow Forecast:
-Demand               125 kW
-Solar                105 kW
-
-Carbon:
-Today's CO₂e         ...
-
-Alerts:
-2
-41. Your diagram mapped directly to software
-
-Let's translate every box in your image into software.
-
-Diagram	Actual implementation
-System Administrator / Operator	React UI + Django users/roles
-Views audit reports	Django Report API + PDF generator
-Configures alerts	Alert configuration models/API
-Interacts with dashboard	React dashboard
-Smart Meters / IoT Sensors	MQTT devices
-Sends live meter readings	MQTT broker
-Machine Learning Forecasting Engine	Python ML service
-External Grid & Weather Data	External APIs/data ingestion
-Manage User Authentication	Django authentication
-Incorporate Real-time Telemetry	IoT ingestion + TimescaleDB
-Run Predictive Demand/Supply Forecasting	ML service
-Execute 15-Minute Temporal Matching	MRV calculation service
-Monitor Battery Storage & Thermal Health	Battery monitoring service
-Trigger Proactive Load-Shifting Alerts	Alert/recommendation service
-Generate Carbon Deficit Heatmap	Analytics API + frontend visualization
-
-So the diagram isn't just a UI diagram.
-
-It's essentially your system architecture + business workflow.
-
-42. The most important Django models
-
-I'd start with these:
-
-Organization
-User
-Role
-Site
-Meter
-EnergyReading
-Battery
-BatteryReading
-WeatherReading
-Forecast
-MRVRecord
-CarbonRecord
-Alert
-LoadShiftRecommendation
-Report
-AuditLog
-
-Then build relationships carefully.
-
-43. APIs you will eventually need
-
-Something like:
-
-/api/auth/login/
-/api/auth/refresh/
-
-/api/organizations/
-/api/users/
-
-/api/sites/
-/api/sites/{id}/
-
-/api/meters/
-/api/meters/{id}/readings/
-
-/api/energy/live/
-/api/energy/history/
-
-/api/forecast/demand/
-/api/forecast/solar/
-
-/api/battery/
-/api/battery/{id}/health/
-
-/api/mrv/temporal-matching/
-/api/mrv/carbon/
-
-/api/alerts/
-/api/alerts/{id}/acknowledge/
-
-/api/recommendations/
-
-/api/reports/
-/api/reports/{id}/generate/
-
-/api/dashboard/summary/
-44. Don't build everything simultaneously
-
-This is very important for you.
-
-If you try to build:
-
-Django
-React
-Kafka
-Kubernetes
-ML
-MQTT
-TimescaleDB
-Redis
-Celery
-AWS
-Grafana
-
-all at once, you'll spend most of your time fighting infrastructure instead of building <br>the actual application.
-
-I'd build it in phases.
-
-45. Phase 1 — Core Django application
-
-Start with:
-
-Django
-DRF
-PostgreSQL
-Docker
-
-Build:
-
-Users
-Organizations
-Sites
-Meters
-EnergyReading
-
-Then APIs.
-
-46. Phase 2 — TimescaleDB
-
-Add:
-
-PostgreSQL
-+
-TimescaleDB
-
-Create:
-
-EnergyReading hypertable
-
-Generate fake data:
-
-10,000
-100,000
-1,000,000
-
-and test queries.
-
-This connects directly with the TimescaleDB work you've already been doing.
-
-47. Phase 3 — Dashboard
-
-Build:
-
-React
-
-and connect:
-
-React
- ↓
-DRF
- ↓
-TimescaleDB
-
-Show:
-
-Current consumption
-Solar generation
-Grid import
-Battery
-Historical charts
-
-At this point you already have a real working application.
-
-48. Phase 4 — Redis + Celery
-
-Add:
-
-Redis
-Celery
-
-Move heavy tasks into workers:
-
-MRV calculations
-daily aggregation
-report generation
-alerts
-49. Phase 5 — IoT
-
-Add:
-
-MQTT
-EMQX/Mosquitto
-
-Then:
-
-Fake meter
-   ↓
-MQTT
-   ↓
-Django/worker
-   ↓
-TimescaleDB
-   ↓
-Dashboard
-
-You don't even need physical hardware initially.
-
-Write a Python script that behaves like a smart meter.
-
-Example concept:
-
-Every 5 seconds:
-
-generate fake reading
-        ↓
-publish MQTT message
-        ↓
-backend receives it
-        ↓
-database
-
-That will allow you to demonstrate the complete IoT pipeline.
-
-50. Phase 6 — MRV engine
-
-Build:
-
-15-minute matching
-Data validation
-Carbon calculations
-Data completeness
-Audit calculations
-
-This is where your project becomes genuinely domain-specific.
-
-51. Phase 7 — ML
-
-Start with historical data.
-
-Build:
-
-Energy dataset
-       ↓
-Data preprocessing
-       ↓
-Feature engineering
-       ↓
-Train model
-       ↓
-Evaluate
-       ↓
-Save model
-       ↓
-Prediction API
-
-Then integrate it with Django.
-
-52. Phase 8 — Alerts
-
-Create:
-
-AlertRule
-Alert
-Notification
-
-Example:
-
-IF predicted demand > threshold
-
-THEN
-
-create alert
-
-Another:
-
-IF battery temperature exceeds configured limit
-
-THEN
-
-create battery warning
-53. Phase 9 — Reports
-
-Generate:
-
-PDF
-CSV
-Excel
-
-Reports can contain:
-
-Energy summary
-Renewable matching
-Carbon
-Data quality
-Forecast
-Alerts
-Audit information
-54. Phase 10 — Scale
-
-Only after the core system works:
-
-Kafka
-Kubernetes
-multiple Django instances
-ML service scaling
-cloud infrastructure
-advanced monitoring
-55. The final architecture I would target
-
-Eventually:
-
-                         ┌───────────────────┐
-                         │ React / Next.js   │
-                         │ Enterprise UI     │
-                         └─────────┬─────────┘
-                                   │
-                                   ▼
-                         ┌───────────────────┐
-                         │ Load Balancer     │
-                         └─────────┬─────────┘
-                                   │
-                         ┌─────────▼─────────┐
-                         │ Django + DRF      │
-                         │ Core API          │
-                         └───┬─────┬─────┬───┘
-                             │     │     │
-              ┌──────────────┘     │     └───────────────┐
-              ▼                    ▼                     ▼
-        PostgreSQL/           Redis                  Celery
-        TimescaleDB                                     │
-              │                                         │
-              │                               ┌─────────┼────────┐
-              │                               ▼         ▼        ▼
-              │                              MRV      Reports   Alerts
-              │
-              │
-Smart Meters  │
-     │        │
-     ▼        │
-   MQTT       │
-     │        │
-     ▼        │
-   EMQX       │
-     │        │
-     ▼        │
-Ingestion ────┘
-     │
-     ▼
-   Kafka
-     │
-     ├───────────────┐
-     ▼               ▼
-ML Service       Analytics
-FastAPI          Services
-     │
-     ▼
-Forecast Models
-
-External APIs
-     │
-     ├── Weather
-     └── Grid data
-56. One important distinction
-
-Your application is not primarily an ML application.
-
-It's better to think of it as:
-
-                  CleanTech Platform
-                         │
-        ┌────────────────┼─────────────────┐
-        │                │                 │
-       MRV             Energy             ML
-        │              Telemetry        Forecasting
-        │                │                 │
-        ▼                ▼                 ▼
-   Verification       Monitoring       Prediction
-        │                │                 │
-        └────────────────┼─────────────────┘
-                         ▼
-                 Decision Support
-
-ML is one component.
-
-The core value comes from combining:
-
-real measurements + temporal energy accounting + verification + forecasting + actionable information.
-
-57. What I recommend you learn, in order
-
-Since you're currently working with Django, PostgreSQL/TimescaleDB and Python, <br>I would follow this sequence:
-
-Backend
-1. Django
-2. Django REST Framework
-3. PostgreSQL
-4. Database relationships
-5. Django ORM
-6. Authentication
-7. Permissions
-8. Redis
-9. Celery
-Data
-10. TimescaleDB
-11. SQL optimization
-12. Time-series data
-13. Data validation
-14. Pandas
-IoT
-15. MQTT
-16. Mosquitto/EMQX
-17. IoT ingestion
-18. WebSockets
-ML
-19. NumPy
-20. Pandas
-21. scikit-learn
-22. XGBoost
-23. Forecasting
-24. Model serving
-25. FastAPI
-Frontend
-26. JavaScript
-27. React
-28. API integration
-29. Charts
-30. WebSockets
-Deployment
-31. Docker
-32. Nginx
-33. Linux
-34. GitHub Actions
-35. Cloud
-36. Monitoring
-Advanced scaling
-37. Kafka
-38. Kubernetes
-39. Terraform
-40. Distributed systems
-58. Your first MVP should look like this
-
-Don't try to implement the entire diagram initially.
-
-Your MVP can be:
-
-                  React Dashboard
-                        │
-                        ▼
-                 Django REST API
-                        │
-             ┌──────────┴──────────┐
-             ▼                     ▼
-       PostgreSQL            TimescaleDB
-             │                     │
-             └──────────┬──────────┘
-                        ▼
-                      Redis
-                        │
-                      Celery
-
-Features:
-
-✓ Login
-✓ Organization
-✓ Sites
-✓ Meters
-✓ Energy readings
-✓ 15-minute readings
-✓ Historical charts
-✓ Solar vs consumption
-✓ Grid consumption
-✓ Basic carbon calculation
-✓ Basic MRV calculation
-✓ Alerts
-✓ PDF report
-
-Then:
-
-             + MQTT
-             + WebSockets
-             + ML forecasting
-             + Battery monitoring
-             + Load-shifting recommendations
-             + Carbon heatmap
-
-And finally:
-
-             + Kafka
-             + Kubernetes
-             + cloud scaling
-             + advanced observability
-The key idea
-
-If I were designing this project with you, I would treat the architecture as three major <br>systems working together:
-
-┌─────────────────────────────────────────────────────┐
-│                 CLEAN TECH PLATFORM                 │
-│                                                     │
-│  1. DATA PLATFORM                                  │
-│     Smart meters → MQTT → TimescaleDB              │
-│                                                     │
-│  2. INTELLIGENCE / MRV                             │
-│     Temporal matching → Carbon → Forecasting       │
-│                                                     │
-│  3. APPLICATION                                    │
-│     Django API → React Dashboard → Reports/Alerts  │
-│                                                     │
-└─────────────────────────────────────────────────────┘
-
-Django is the central application/backend, TimescaleDB is the time-series data foundation, <br>MQTT handles device communication, Celery handles asynchronous work, <br>Redis supports caching/queues, ML provides forecasting, <br>and React provides the operator-facing dashboard.
-
-And because you already started working with Django + TimescaleDB + EnergyReading, <br>you are actually at a very good starting point <br>for implementing the first piece: the telemetry/data platform.
-
-The best next step is not to start with ML or React. Build the backend foundation first: <br>Django project → multi-tenant models → EnergyReading → <br>TimescaleDB hypertable → DRF APIs → fake 15-minute meter data → dashboard API. <br>Once that works, the rest of the architecture has somewhere solid to plug into.
+  <!-- ================================
+       HEADER
+  ================================= -->
+
+  <header>
+
+    <div class="container">
+
+      <div class="brand">
+        Ge MRV Engine.
+      </div>
+
+      <div class="label">
+        BTech Major Project Documentation
+      </div>
+
+      <h1>
+        CleanTech: Predictive Green Energy MRV Engine
+      </h1>
+
+      <p>
+        A web-based platform for renewable energy monitoring,
+        Measurement, Reporting and Verification, machine learning
+        forecasting, and energy decision support.
+      </p>
+
+      <div class="badges">
+        <span>Renewable Energy</span>
+        <span>Machine Learning</span>
+        <span>MRV</span>
+        <span>Sustainability</span>
+        <span>Energy Analytics</span>
+      </div>
 
     </div>
-</code>
-</pre>
+
+  </header>
+
+
+  <!-- ================================
+       MAIN CONTENT
+  ================================= -->
+
+  <div class="container layout">
+
+
+    <!-- ================================
+         SIDEBAR
+    ================================= -->
+
+    <aside>
+
+      <h2>
+        Contents
+      </h2>
+
+      <nav>
+
+        <a href="#introduction">
+          1. Project Introduction
+        </a>
+
+        <a href="#problem">
+          2. Problem Statement
+        </a>
+
+        <a href="#objectives">
+          3. Project Objectives
+        </a>
+
+        <a href="#working">
+          4. System Working
+        </a>
+
+        <a href="#architecture">
+          5. System Architecture
+        </a>
+
+        <a href="#modules">
+          6. Main Modules
+        </a>
+
+        <a href="#technology">
+          7. Technology Stack
+        </a>
+
+        <a href="#database">
+          8. Database Design
+        </a>
+
+        <a href="#ml">
+          9. Machine Learning Workflow
+        </a>
+
+        <a href="#mrv">
+          10. MRV Calculation
+        </a>
+
+        <a href="#userflow">
+          11. Complete User Flow
+        </a>
+
+        <a href="#future">
+          12. Future Scope
+        </a>
+
+        <a href="#roadmap">
+          13. Implementation Roadmap
+        </a>
+
+      </nav>
+
+    </aside>
+
+
+    <!-- ================================
+         DOCUMENTATION
+    ================================= -->
+
+    <main>
+
+
+      <!-- 1. PROJECT INTRODUCTION -->
+
+      <section id="introduction">
+
+        <h2>
+          1. Project Introduction
+        </h2>
+
+        <p>
+          CleanTech is a predictive green energy management
+          and MRV platform. It is designed to collect energy
+          data, measure renewable generation and consumption,
+          prepare reports, verify data quality, and support
+          operational decisions.
+        </p>
+
+        <p>
+          The platform can monitor renewable generation,
+          electricity consumption, grid usage, battery storage,
+          and other energy assets. Machine learning can be
+          used to forecast future energy demand and renewable
+          energy generation.
+        </p>
+
+        <h3>
+          Meaning of MRV
+        </h3>
+
+        <ul>
+
+          <li>
+            <strong>Measurement:</strong>
+            Collect and calculate energy and environmental
+            information.
+          </li>
+
+          <li>
+            <strong>Reporting:</strong>
+            Present processed information through dashboards
+            and formal reports.
+          </li>
+
+          <li>
+            <strong>Verification:</strong>
+            Check the source, quality, calculations, and
+            supporting evidence.
+          </li>
+
+        </ul>
+
+        <div class="note">
+
+          <strong>Project Status:</strong>
+
+          Features described as optional or proposed should
+          be marked as implemented only after development
+          and testing.
+
+        </div>
+
+      </section>
+
+
+      <!-- 2. PROBLEM STATEMENT -->
+
+      <section id="problem">
+
+        <h2>
+          2. Problem Statement
+        </h2>
+
+        <p>
+          Organizations may use solar energy, grid electricity,
+          batteries, and multiple meters. Their information is
+          often distributed across spreadsheets, devices, and
+          separate monitoring tools.
+        </p>
+
+        <ul>
+
+          <li>
+            Manual data collection and reporting take time.
+          </li>
+
+          <li>
+            Data may contain missing values, duplicate records,
+            or incorrect units.
+          </li>
+
+          <li>
+            Renewable generation and consumption are difficult
+            to compare in one place.
+          </li>
+
+          <li>
+            Future demand and renewable generation are difficult
+            to estimate manually.
+          </li>
+
+          <li>
+            Battery and load-shifting decisions may not be
+            data-driven.
+          </li>
+
+          <li>
+            Reports may lack traceable sources and verification
+            records.
+          </li>
+
+        </ul>
+
+        <p>
+          CleanTech addresses these issues by bringing data
+          collection, analytics, forecasting, reporting, and
+          decision support into one application.
+        </p>
+
+      </section>
+
+
+      <!-- 3. OBJECTIVES -->
+
+      <section id="objectives">
+
+        <h2>
+          3. Project Objectives
+        </h2>
+
+        <ul>
+
+          <li>
+            Collect renewable generation and energy
+            consumption data.
+          </li>
+
+          <li>
+            Provide a centralized energy monitoring dashboard.
+          </li>
+
+          <li>
+            Calculate renewable matching, energy deficit,
+            and grid dependency.
+          </li>
+
+          <li>
+            Generate structured and traceable MRV reports.
+          </li>
+
+          <li>
+            Forecast future energy demand and renewable
+            generation.
+          </li>
+
+          <li>
+            Monitor battery status and energy storage
+            information.
+          </li>
+
+          <li>
+            Suggest explainable load-shifting and
+            energy-saving actions.
+          </li>
+
+          <li>
+            Detect missing, abnormal, or inconsistent readings.
+          </li>
+
+          <li>
+            Support future IoT integration and multi-site
+            monitoring.
+          </li>
+
+        </ul>
+
+      </section>
+
+
+      <!-- 4. HOW SYSTEM WORKS -->
+
+      <section id="working">
+
+        <h2>
+          4. How the System Works
+        </h2>
+
+        <p>
+          The system follows a data pipeline. Data enters the
+          application, is validated and stored, is processed
+          by the MRV engine, and is then used by analytics
+          and machine learning components.
+        </p>
+
+        <div class="flow">
+
+
+          <div class="step">
+
+            <div class="number">
+              1
+            </div>
+
+            <div>
+
+              <strong>
+                Data Input
+              </strong>
+
+              Readings arrive through CSV files, forms,
+              APIs, smart meters, or optional IoT devices.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              2
+            </div>
+
+            <div>
+
+              <strong>
+                Validation
+              </strong>
+
+              The system checks timestamps, units,
+              missing values, duplicates, and invalid readings.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              3
+            </div>
+
+            <div>
+
+              <strong>
+                Storage
+              </strong>
+
+              Validated data is stored with site, asset,
+              timestamp, value, unit, and source information.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              4
+            </div>
+
+            <div>
+
+              <strong>
+                Processing
+              </strong>
+
+              The MRV engine calculates energy totals,
+              renewable matching, grid usage, and
+              environmental indicators.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              5
+            </div>
+
+            <div>
+
+              <strong>
+                Forecasting
+              </strong>
+
+              Machine learning models estimate future
+              energy demand and renewable generation.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              6
+            </div>
+
+            <div>
+
+              <strong>
+                Output
+              </strong>
+
+              Dashboards, alerts, recommendations,
+              and reports are displayed to the user.
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- 5. SYSTEM ARCHITECTURE -->
+
+      <section id="architecture">
+
+        <h2>
+          5. System Architecture
+        </h2>
+
+        <p>
+          The frontend communicates with the backend through
+          HTTP or REST APIs. The backend manages authentication,
+          validation, calculations, database operations, and
+          communication with the ML layer.
+        </p>
+
+        <div class="architecture">
+
+
+          <div class="layer">
+
+            <strong>
+              Frontend
+            </strong>
+
+            <br>
+
+            Dashboard, forms, charts, filters,
+            alerts, and reports
+
+          </div>
+
+
+          <div class="arrow">
+            ↓ REST API
+          </div>
+
+
+          <div class="layer">
+
+            <strong>
+              Backend
+            </strong>
+
+            <br>
+
+            Authentication, business logic,
+            MRV calculations, and report generation
+
+          </div>
+
+
+          <div class="arrow">
+            ↓ Database Operations
+          </div>
+
+
+          <div class="layer">
+
+            <strong>
+              Database
+            </strong>
+
+            <br>
+
+            Users, sites, assets, readings,
+            forecasts, reports, and alerts
+
+          </div>
+
+
+          <div class="arrow">
+            ↔
+          </div>
+
+
+          <div class="layer">
+
+            <strong>
+              Machine Learning Layer
+            </strong>
+
+            <br>
+
+            Preprocessing, training, prediction,
+            evaluation, and model storage
+
+          </div>
+
+
+        </div>
+
+        <div class="warning">
+
+          <strong>
+            Security:
+          </strong>
+
+          Secret keys, database credentials, and model
+          credentials must remain on the backend and must
+          not be exposed in frontend code.
+
+        </div>
+
+      </section>
+
+
+      <!-- 6. MAIN MODULES -->
+
+      <section id="modules">
+
+        <h2>
+          6. Main Modules
+        </h2>
+
+        <div class="grid">
+
+
+          <div class="card">
+
+            <h3>
+              6.1 Data Collection
+            </h3>
+
+            <p>
+              Receives readings from files, forms, APIs,
+              meters, or IoT devices. Records should contain
+              timestamp, site, asset, value, unit, and source.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              6.2 Energy Monitoring
+            </h3>
+
+            <p>
+              Displays renewable generation, consumption,
+              grid import/export, battery status, totals,
+              and historical trends.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              6.3 MRV Calculation
+            </h3>
+
+            <p>
+              Calculates energy indicators, prepares reports,
+              records data sources, and supports verification.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              6.4 ML Forecasting
+            </h3>
+
+            <p>
+              Predicts future demand and renewable generation
+              using historical data and optional weather features.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              6.5 Battery Monitoring
+            </h3>
+
+            <p>
+              Tracks state of charge, capacity, charging,
+              discharging, operating limits, and battery alerts.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              6.6 Recommendation System
+            </h3>
+
+            <p>
+              Suggests load shifting, battery use, or
+              energy-saving actions based on demand,
+              generation, tariffs, and constraints.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              6.7 Dashboard and Reports
+            </h3>
+
+            <p>
+              Shows charts, summary cards, filters,
+              site-wise results, and downloadable reports.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              6.8 Data Quality and Alerts
+            </h3>
+
+            <p>
+              Identifies missing readings, unusual values,
+              delayed data, and possible sensor problems.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- 7. TECHNOLOGY STACK -->
+
+      <section id="technology">
+
+        <h2>
+          7. Technology Stack
+        </h2>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <tr>
+              <th>
+                Layer
+              </th>
+
+              <th>
+                Technology
+              </th>
+
+              <th>
+                Purpose
+              </th>
+            </tr>
+
+
+            <tr>
+
+              <td>
+                Frontend
+              </td>
+
+              <td>
+                HTML, CSS, JavaScript or React
+              </td>
+
+              <td>
+                User interface, charts, forms,
+                and dashboard.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                Backend
+              </td>
+
+              <td>
+                Python, Django, Django REST Framework
+              </td>
+
+              <td>
+                Authentication, APIs, calculations,
+                and reports.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                Processing
+              </td>
+
+              <td>
+                Pandas, NumPy
+              </td>
+
+              <td>
+                Cleaning, transformation, aggregation,
+                and feature creation.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                Machine Learning
+              </td>
+
+              <td>
+                Scikit-learn and optional PyTorch
+              </td>
+
+              <td>
+                Forecasting, evaluation,
+                and anomaly detection.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                Database
+              </td>
+
+              <td>
+                PostgreSQL or MySQL
+              </td>
+
+              <td>
+                Persistent storage of project data.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                Charts
+              </td>
+
+              <td>
+                Chart.js, Recharts, or Matplotlib
+              </td>
+
+              <td>
+                Visualizing energy trends
+                and forecasts.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                Deployment
+              </td>
+
+              <td>
+                Git, GitHub, Docker, Cloud Hosting
+              </td>
+
+              <td>
+                Version control, packaging,
+                and deployment.
+              </td>
+
+            </tr>
+
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+      <!-- 8. DATABASE DESIGN -->
+
+      <section id="database">
+
+        <h2>
+          8. Database Design
+        </h2>
+
+        <p>
+          The database stores raw measurements and processed
+          results. A relational design can connect users,
+          sites, assets, readings, forecasts, and reports.
+        </p>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <tr>
+
+              <th>
+                Model
+              </th>
+
+              <th>
+                Important Fields
+              </th>
+
+              <th>
+                Purpose
+              </th>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                User
+              </td>
+
+              <td>
+                id, name, email, password_hash, role
+              </td>
+
+              <td>
+                Authentication and access control.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                Site
+              </td>
+
+              <td>
+                id, name, location, capacity, owner_id
+              </td>
+
+              <td>
+                Represents a building or industrial location.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                EnergyAsset
+              </td>
+
+              <td>
+                id, site_id, asset_type, capacity, status
+              </td>
+
+              <td>
+                Solar panels, batteries, and meters.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                EnergyReading
+              </td>
+
+              <td>
+                id, asset_id, timestamp, value, unit, source
+              </td>
+
+              <td>
+                Time-based energy measurements.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                Forecast
+              </td>
+
+              <td>
+                id, site_id, forecast_time,
+                predicted_value, model_version
+              </td>
+
+              <td>
+                Stores future predictions.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                MRVReport
+              </td>
+
+              <td>
+                id, site_id, period_start,
+                period_end, status
+              </td>
+
+              <td>
+                Stores report metadata and status.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                Alert
+              </td>
+
+              <td>
+                id, site_id, alert_type,
+                severity, message
+              </td>
+
+              <td>
+                Stores operational and data-quality alerts.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                Recommendation
+              </td>
+
+              <td>
+                id, site_id, action,
+                reason, expected_impact
+              </td>
+
+              <td>
+                Stores suggested actions and explanations.
+              </td>
+
+            </tr>
+
+
+          </table>
+
+        </div>
+
+
+        <h3>
+          Relationships
+        </h3>
+
+        <ul>
+
+          <li>
+            One user can manage multiple sites.
+          </li>
+
+          <li>
+            One site can contain multiple assets.
+          </li>
+
+          <li>
+            One asset can have multiple readings.
+          </li>
+
+          <li>
+            One site can have multiple forecasts,
+            reports, alerts, and recommendations.
+          </li>
+
+        </ul>
+
+      </section>
+
+
+      <!-- 9. MACHINE LEARNING WORKFLOW -->
+
+      <section id="ml">
+
+        <h2>
+          9. Machine Learning Workflow
+        </h2>
+
+        <div class="flow">
+
+
+          <div class="step">
+
+            <div class="number">
+              1
+            </div>
+
+            <div>
+
+              <strong>
+                Collect Data
+              </strong>
+
+              Gather historical demand, generation,
+              weather, calendar, and site features.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              2
+            </div>
+
+            <div>
+
+              <strong>
+                Preprocess Data
+              </strong>
+
+              Handle missing values, duplicates,
+              outliers, units, and timestamps.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              3
+            </div>
+
+            <div>
+
+              <strong>
+                Create Features
+              </strong>
+
+              Create hour, weekday, month, lag values,
+              rolling averages, and weather features.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              4
+            </div>
+
+            <div>
+
+              <strong>
+                Split Data
+              </strong>
+
+              Use a time-based train and test split
+              for chronological forecasting.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              5
+            </div>
+
+            <div>
+
+              <strong>
+                Train Model
+              </strong>
+
+              Start with a baseline model and compare
+              algorithms such as Random Forest
+              or Gradient Boosting.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              6
+            </div>
+
+            <div>
+
+              <strong>
+                Evaluate Model
+              </strong>
+
+              Use MAE, RMSE, and baseline comparison
+              to measure prediction error.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              7
+            </div>
+
+            <div>
+
+              <strong>
+                Deploy and Monitor
+              </strong>
+
+              Save model versions, generate forecasts,
+              monitor error, and retrain when required.
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="formula">
+
+          MAE = Average of Absolute Prediction Errors
+
+        </div>
+
+
+        <div class="formula">
+
+          RMSE = Square Root of Average Squared Prediction Errors
+
+        </div>
+
+
+        <div class="warning">
+
+          <strong>
+            Important:
+          </strong>
+
+          Predictions are estimates. Critical equipment
+          should not be controlled automatically without
+          safety rules, testing, and human approval.
+
+        </div>
+
+      </section>
+
+
+      <!-- 10. MRV CALCULATION -->
+
+      <section id="mrv">
+
+        <h2>
+          10. MRV Calculation
+        </h2>
+
+
+        <h3>
+          10.1 Measurement
+        </h3>
+
+        <p>
+          Measurement collects energy values from approved
+          sources. Each reading should include a timestamp,
+          unit, asset, site, source, and data-quality status.
+        </p>
+
+        <ul>
+
+          <li>
+            Renewable generation in kWh.
+          </li>
+
+          <li>
+            Total consumption in kWh.
+          </li>
+
+          <li>
+            Grid import and export.
+          </li>
+
+          <li>
+            Battery charging and discharging.
+          </li>
+
+          <li>
+            Data completeness and abnormal readings.
+          </li>
+
+        </ul>
+
+
+        <h3>
+          10.2 Reporting
+        </h3>
+
+        <p>
+          Reporting converts measurements into daily,
+          weekly, monthly, or site-wise summaries.
+        </p>
+
+        <ul>
+
+          <li>
+            Total renewable generation and consumption.
+          </li>
+
+          <li>
+            Renewable matching percentage.
+          </li>
+
+          <li>
+            Grid dependency and energy deficit.
+          </li>
+
+          <li>
+            Estimated emissions avoided, when a valid
+            emission factor is available.
+          </li>
+
+          <li>
+            Data sources, reporting period,
+            and report generation time.
+          </li>
+
+        </ul>
+
+
+        <h3>
+          10.3 Verification
+        </h3>
+
+        <p>
+          Verification checks whether reports are supported
+          by valid data and reproducible calculations.
+        </p>
+
+        <ul>
+
+          <li>
+            Check timestamps, units, missing values,
+            and duplicates.
+          </li>
+
+          <li>
+            Compare calculated totals with source records.
+          </li>
+
+          <li>
+            Document calculation rules and
+            emission-factor sources.
+          </li>
+
+          <li>
+            Store report versions and audit logs.
+          </li>
+
+          <li>
+            Show data coverage and validation status.
+          </li>
+
+        </ul>
+
+
+        <h3>
+          Example Formulas
+        </h3>
+
+
+        <div class="formula">
+
+          Renewable Matching (%) =
+
+          Renewable Energy Used ÷ Total Consumption × 100
+
+        </div>
+
+
+        <div class="formula">
+
+          Energy Deficit =
+
+          Total Consumption − Renewable Energy Available
+
+        </div>
+
+
+        <div class="formula">
+
+          Estimated Emissions Avoided =
+
+          Renewable Energy Displacing Grid Energy ×
+          Emission Factor
+
+        </div>
+
+
+        <p>
+          The final formulas must follow the project's
+          selected energy boundary, storage rules, grid
+          accounting method, and documented emission factor.
+        </p>
+
+      </section>
+
+
+      <!-- 11. COMPLETE USER FLOW -->
+
+      <section id="userflow">
+
+        <h2>
+          11. Complete User Flow
+        </h2>
+
+        <div class="flow">
+
+
+          <div class="step">
+
+            <div class="number">
+              1
+            </div>
+
+            <div>
+
+              <strong>
+                Registration and Login
+              </strong>
+
+              The user logs in and receives permissions
+              according to their role.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              2
+            </div>
+
+            <div>
+
+              <strong>
+                Site Setup
+              </strong>
+
+              The user creates a site and enters
+              location, capacity, and asset details.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              3
+            </div>
+
+            <div>
+
+              <strong>
+                Data Upload
+              </strong>
+
+              Readings are uploaded through CSV,
+              forms, APIs, or IoT integration.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              4
+            </div>
+
+            <div>
+
+              <strong>
+                Validation
+              </strong>
+
+              The system checks and flags incomplete
+              or invalid readings.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              5
+            </div>
+
+            <div>
+
+              <strong>
+                Dashboard
+              </strong>
+
+              The user views current and historical
+              energy metrics.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              6
+            </div>
+
+            <div>
+
+              <strong>
+                Forecast
+              </strong>
+
+              The system generates demand and
+              renewable generation predictions.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              7
+            </div>
+
+            <div>
+
+              <strong>
+                Recommendations
+              </strong>
+
+              The system presents possible actions
+              with reasons and constraints.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              8
+            </div>
+
+            <div>
+
+              <strong>
+                Report Generation
+              </strong>
+
+              The user selects a site and period
+              and generates an MRV report.
+
+            </div>
+
+          </div>
+
+
+          <div class="step">
+
+            <div class="number">
+              9
+            </div>
+
+            <div>
+
+              <strong>
+                Verification
+              </strong>
+
+              The report includes data coverage,
+              calculations, and source information.
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- 12. FUTURE SCOPE -->
+
+      <section id="future">
+
+        <h2>
+          12. Future Scope
+        </h2>
+
+        <ul>
+
+          <li>
+            IoT and smart-meter integration.
+          </li>
+
+          <li>
+            Weather API integration for solar forecasting.
+          </li>
+
+          <li>
+            Multi-site and multi-building monitoring.
+          </li>
+
+          <li>
+            Advanced forecasting using deep learning.
+          </li>
+
+          <li>
+            Battery dispatch and charge/discharge planning.
+          </li>
+
+          <li>
+            Tariff optimization and time-of-use recommendations.
+          </li>
+
+          <li>
+            EV charging schedule optimization.
+          </li>
+
+          <li>
+            Anomaly detection for sensors and
+            energy consumption.
+          </li>
+
+          <li>
+            Explainable AI and prediction uncertainty.
+          </li>
+
+          <li>
+            Email notifications and role-based access control.
+          </li>
+
+          <li>
+            What-if simulation for load shifting
+            and battery usage.
+          </li>
+
+          <li>
+            Model monitoring, drift detection,
+            and automated retraining.
+          </li>
+
+        </ul>
+
+      </section>
+
+
+      <!-- 13. IMPLEMENTATION ROADMAP -->
+
+      <section id="roadmap">
+
+        <h2>
+          13. Implementation Roadmap
+        </h2>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <tr>
+
+              <th>
+                Phase
+              </th>
+
+              <th>
+                Work
+              </th>
+
+              <th>
+                Result
+              </th>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                1
+              </td>
+
+              <td>
+                Project setup, authentication,
+                database, and basic UI.
+              </td>
+
+              <td>
+                Users and sites can be managed.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                2
+              </td>
+
+              <td>
+                CSV upload, validation,
+                readings, and storage.
+              </td>
+
+              <td>
+                Validated energy data is available.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                3
+              </td>
+
+              <td>
+                Dashboard and basic MRV calculations.
+              </td>
+
+              <td>
+                Energy metrics and summaries are displayed.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                4
+              </td>
+
+              <td>
+                Baseline ML forecasting and evaluation.
+              </td>
+
+              <td>
+                Future demand and generation estimates
+                are shown.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                5
+              </td>
+
+              <td>
+                Reports, verification checks,
+                and exports.
+              </td>
+
+              <td>
+                Structured and traceable reports
+                are generated.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                6
+              </td>
+
+              <td>
+                Recommendations, alerts, battery
+                features, and testing.
+              </td>
+
+              <td>
+                Decision-support functionality is added.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                7
+              </td>
+
+              <td>
+                Deployment, security review,
+                and documentation.
+              </td>
+
+              <td>
+                A maintainable project release is prepared.
+              </td>
+
+            </tr>
+
+
+          </table>
+
+        </div>
+
+
+        <h3>
+          Final Project Definition
+        </h3>
+
+        <p>
+          CleanTech is a proposed predictive green energy
+          MRV platform that combines energy data collection,
+          monitoring, reporting, verification, machine
+          learning forecasting, and decision support to
+          make renewable energy performance measurable
+          and easier to improve.
+        </p>
+
+
+        <div class="note">
+
+          <strong>
+            Development Principle:
+          </strong>
+
+          Build and test the data pipeline and calculations
+          first. Add forecasting and recommendations after
+          the foundation is reliable.
+
+        </div>
+
+      </section>
+
+
+    </main>
+
+  </div>
+
+
+  <!-- ================================
+       FOOTER
+  ================================= -->
+
+  <footer>
+
+    CleanTech: Predictive Green Energy MRV Engine
+
+    <br>
+
+    Project Documentation | 2027
+
+  </footer>
+
+
+  <!-- ================================
+       PRINT / SAVE PDF BUTTON
+  ================================= -->
+
+  <button
+    class="print"
+    onclick="window.print()">
+
+    Print / Save PDF
+
+  </button>
+
+
 </body>
+
 </html>
