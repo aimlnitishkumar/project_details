@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRV Engine - Measurement Logic</title>
+    
+    <!-- Tailwind CSS for sleek, modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- MathJax Configuration and Script for rendering LaTeX math formulas -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-slate-100 p-8 font-sans antialiased">
+
+    <div class="max-w-4xl mx-auto bg-white p-10 rounded-2xl shadow-lg border border-slate-200">
+        
+        <h1 class="text-3xl font-extrabold text-slate-800 mb-6 border-b pb-4">
+            CleanTech MRV Engine: Temporal Matching Logic
+        </h1>
+        
+        <p class="text-slate-600 mb-4 text-lg">
+            To calculate the temporal matching performance in strict 15-minute intervals, the database must aggregate the raw telemetry data using a specific set of mathematical formulas.
+        </p>
+        
+        <p class="text-slate-600 mb-10 text-lg">
+            Here is the exact logic MRV Engine will use to calculate production, consumption, and the resulting carbon deficit.
+        </p>
+
+        <div class="space-y-10">
+            
+            <!-- Section 1 -->
+            <section>
+                <h2 class="text-2xl font-bold text-indigo-600 mb-3">1. Total Consumption & Generation (15-Min Window)</h2>
+                <p class="text-slate-700 mb-4">First, the system sums all individual smart meter readings ($i$) recorded within that specific 15-minute timeframe.</p>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center text-lg overflow-x-auto">
+                    $$E_{consumed} = \sum_{i=1}^{n} C_i$$
+                    <br>
+                    $$E_{generated} = \sum_{i=1}^{n} G_i$$
+                </div>
+                <p class="text-sm text-slate-500 mt-3 italic">
+                    (Where $C_i$ represents each industrial consumption reading, $G_i$ represents each renewable generation reading, and $E$ is total Energy in kWh).
+                </p>
+            </section>
+
+            <!-- Section 2 -->
+            <section>
+                <h2 class="text-2xl font-bold text-indigo-600 mb-3">2. The Temporal Match (Actual Green Energy Used)</h2>
+                <p class="text-slate-700 mb-4">A facility cannot claim to use more green energy than it actually consumed during that exact window. The matched energy is simply the lower value between what was generated and what was consumed.</p>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center text-lg overflow-x-auto">
+                    $$E_{matched} = \min(E_{generated}, E_{consumed})$$
+                </div>
+            </section>
+
+            <!-- Section 3 -->
+            <section>
+                <h2 class="text-2xl font-bold text-indigo-600 mb-3">3. Temporal Match Score (%)</h2>
+                <p class="text-slate-700 mb-4">This calculates the percentage of the facility's power that was genuinely green during that interval.</p>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center text-lg overflow-x-auto">
+                    $$Score_{green} = \left( \frac{E_{matched}}{E_{consumed}} \right) \times 100$$
+                </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section>
+                <h2 class="text-2xl font-bold text-indigo-600 mb-3">4. Carbon Deficit (%)</h2>
+                <p class="text-slate-700 mb-4">This formula powers the visual carbon deficit heatmap by pinpointing the exact intervals where clean generation fell short.</p>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 text-center text-lg overflow-x-auto">
+                    $$Deficit_{carbon} = 100 - Score_{green}$$
+                </div>
+            </section>
+
+            <!-- Example Section -->
+            <section class="bg-indigo-50 border-l-4 border-indigo-500 p-8 rounded-r-xl mt-12 shadow-sm">
+                <h3 class="text-2xl font-bold text-indigo-900 mb-4">Concrete Example:</h3>
+                <p class="text-slate-800 mb-4 text-lg">
+                    If an industrial grid consumes <strong>500 kWh</strong> ($E_{consumed}$) between 2:00 PM and 2:15 PM, but the solar array only generates <strong>300 kWh</strong> ($E_{generated}$) due to cloud cover:
+                </p>
+                
+                <ul class="list-none space-y-3 mt-4 ml-2 text-slate-800 text-lg">
+                    <li class="flex items-center">
+                        <span class="text-indigo-500 mr-2">➔</span> 
+                        <strong>Matched Energy</strong> &nbsp; = $\min(300, 500) = 300$ kWh.
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-indigo-500 mr-2">➔</span> 
+                        <strong>Green Score</strong> &nbsp; = $(300 / 500) \times 100 = 60\%$.
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-indigo-500 mr-2">➔</span> 
+                        <strong>Carbon Deficit</strong> &nbsp; = $100 - 60 = 40\%$.
+                    </li>
+                </ul>
+                
+                <div class="mt-6 p-4 bg-red-100 text-red-700 rounded-lg font-semibold text-lg border border-red-200">
+                     API will instantly flag this 40% deficit, proving that the facility was forced to rely on dirty grid backup for the remaining 200 kWh.
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+</body>
+</html>
