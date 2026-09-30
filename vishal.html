@@ -1,146 +1,341 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="Vishal's personal profile."
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vishal's personal profile.">
   <title>Vishal | MRV Engine</title>
 
-  <link
-    rel="stylesheet"
-    href="css/style.css"
-  >
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
 
-  <script
-    src="js/script.js"
-    defer
-  ></script>
-
-
-  <!-- =====================================
-       ONLY THIS HTML FILE CUSTOM CSS
-  ====================================== -->
-
+  <!-- UI styling for this HTML page only -->
   <style>
+    :root {
+      --profile-green: #15966b;
+      --profile-dark: #123b30;
+      --profile-light: #edf8f2;
+      --profile-text: #52665e;
+      --profile-border: #e0ebe5;
+      --profile-shadow: 0 12px 35px rgba(17, 66, 48, 0.07);
+    }
 
-    /* =====================================
-       PROFILE HERO LAYOUT
-    ====================================== */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f7faf8;
+      color: var(--profile-dark);
+    }
+
+    .site-header {
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--profile-border);
+      box-shadow: 0 3px 18px rgba(17, 66, 48, 0.035);
+    }
+
+    .brand-mark {
+      background: var(--profile-green);
+      color: white;
+      border-radius: 10px;
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease, background 0.2s ease;
+      border-radius: 9px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--profile-green);
+      background: var(--profile-light);
+    }
+
+    /* Profile hero */
+    .profile-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 76px 0;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(21, 150, 107, 0.12), transparent 28%),
+        linear-gradient(135deg, #f0f9f4 0%, #ffffff 58%, #eaf6ef 100%);
+      border-bottom: 1px solid var(--profile-border);
+    }
 
     .profile-hero-inner {
       display: flex !important;
+      flex-direction: row !important;
       align-items: center !important;
       justify-content: flex-start !important;
-      gap: 45px !important;
+      gap: 48px !important;
     }
 
-
-    /* =====================================
-       PERFECT CIRCULAR PROFILE IMAGE
-    ====================================== */
-
+    /* Circular profile photo */
     .profile-photo.vishal {
-      width: 230px !important;
-      height: 230px !important;
-
-      min-width: 230px !important;
-      min-height: 230px !important;
-
-      border-radius: 50% !important;
+      box-sizing: border-box !important;
+      position: relative;
+      width: 220px !important;
+      height: 220px !important;
+      min-width: 220px !important;
+      min-height: 220px !important;
+      max-width: 220px !important;
+      max-height: 220px !important;
+      flex: 0 0 220px !important;
+      padding: 0 !important;
+      margin: 0 !important;
       overflow: hidden !important;
-
+      border-radius: 50% !important;
+      border: 5px solid white !important;
+      outline: 3px solid var(--profile-green);
+      background: #e5f3eb !important;
+      box-shadow: 0 12px 32px rgba(21, 150, 107, 0.18);
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-
-      flex-shrink: 0 !important;
-
-      border: 4px solid #15966b !important;
-
-      background: #eaf4f0 !important;
-
-      padding: 0 !important;
     }
-
 
     .profile-photo.vishal img {
+      display: block !important;
       width: 100% !important;
       height: 100% !important;
-
+      min-width: 0 !important;
       max-width: none !important;
-
-      display: block !important;
-
       object-fit: cover !important;
-      object-position: center !important;
-
+      object-position: center 35% !important;
       border-radius: 50% !important;
+      margin: 0 !important;
     }
 
-
-    /* =====================================
-       PROFILE CONTENT BESIDE PHOTO
-    ====================================== */
-
     .profile-hero-inner > div:nth-child(2) {
-      flex: 1 !important;
+      flex: 1 1 auto !important;
       min-width: 0 !important;
     }
 
+    .profile-hero .eyebrow {
+      display: inline-block;
+      padding: 8px 13px;
+      border-radius: 30px;
+      background: #e1f4e9;
+      color: #11744f;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
 
-    /* =====================================
-       SELECTED PROJECT
-    ====================================== */
+    .profile-hero h1 {
+      margin: 12px 0;
+      color: var(--profile-dark);
+      font-size: clamp(2.5rem, 5vw, 4.1rem);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+    }
 
+    .profile-intro {
+      max-width: 590px;
+      color: var(--profile-text);
+      font-size: 1.08rem;
+      line-height: 1.85;
+    }
+
+    /* Main content layout */
+    .profile-main {
+      padding-top: 55px;
+      padding-bottom: 65px;
+    }
+
+    .profile-layout {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .info-section {
+      box-sizing: border-box;
+      min-width: 0;
+      padding: 28px;
+      background: #ffffff;
+      border: 1px solid var(--profile-border);
+      border-radius: 20px;
+      box-shadow: var(--profile-shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .info-section:hover {
+      transform: translateY(-4px);
+      border-color: #b9e3ce;
+      box-shadow: 0 17px 38px rgba(17, 66, 48, 0.1);
+    }
+
+    .info-section.wide {
+      grid-column: 1 / -1;
+    }
+
+    .info-section h2 {
+      position: relative;
+      margin: 0 0 22px;
+      padding-bottom: 13px;
+      color: var(--profile-dark);
+      font-size: 1.45rem;
+    }
+
+    .info-section h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 43px;
+      height: 3px;
+      border-radius: 5px;
+      background: var(--profile-green);
+    }
+
+    .info-section p,
+    .info-section li {
+      color: var(--profile-text);
+      font-size: 0.98rem;
+      line-height: 1.85;
+    }
+
+    .info-section p {
+      margin-bottom: 0;
+    }
+
+    .info-section strong {
+      color: var(--profile-dark);
+    }
+
+    .info-section ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .info-section ul li {
+      padding: 9px 14px;
+      border: 1px solid #dcefe4;
+      border-radius: 30px;
+      background: #f0f8f3;
+      color: #23684c;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .info-section ul li:hover {
+      background: #e0f3e7;
+      transform: translateY(-2px);
+    }
+
+    .muted {
+      color: #7b8e85;
+    }
+
+    /* Selected project */
     .project-list {
-      margin-top: 15px;
+      margin-top: 8px;
     }
 
     .project-item {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
+      padding: 23px;
+      border: 1px solid #dcefe4;
+      border-radius: 16px;
+      background:
+        linear-gradient(115deg, #f0f9f3 0%, #ffffff 80%);
     }
 
     .project-item strong {
-      font-size: 1.15rem;
-    }
-
-    .project-item span {
+      color: #126346;
+      font-size: 1.16rem;
       line-height: 1.6;
     }
 
+    .project-item span {
+      color: var(--profile-text);
+      font-size: 0.96rem;
+      line-height: 1.75;
+    }
 
-    /* =====================================
-       RESPONSIVE DESIGN
-    ====================================== */
+    /* Contact buttons */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
 
+    .contact-row a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border: 1px solid #cde8d8;
+      border-radius: 11px;
+      background: #eff8f2;
+      color: #176947;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .contact-row a:hover {
+      background: #dff2e6;
+      transform: translateY(-2px);
+    }
+
+    .back-link {
+      display: inline-flex;
+      margin-top: 30px;
+      padding: 12px 17px;
+      border: 1px solid var(--profile-border);
+      border-radius: 11px;
+      background: white;
+      color: #176947;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: var(--profile-light);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--profile-border);
+      background: #ffffff;
+    }
+
+    .footer-inner {
+      color: var(--profile-text);
+    }
+
+    /* Tablet and mobile */
     @media (max-width: 768px) {
+      .profile-hero {
+        padding: 48px 0;
+      }
 
       .profile-hero-inner {
         flex-direction: column !important;
         text-align: center !important;
-        gap: 25px !important;
+        gap: 28px !important;
       }
 
       .profile-photo.vishal {
-        width: 100px !important;
-        height: 100px !important;
-
+        width: 180px !important;
+        height: 180px !important;
         min-width: 180px !important;
         min-height: 180px !important;
+        max-width: 180px !important;
+        max-height: 180px !important;
+        flex-basis: 180px !important;
       }
 
       .profile-hero-inner > div:nth-child(2) {
@@ -149,42 +344,80 @@
         align-items: center !important;
       }
 
+      .profile-hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .profile-intro {
+        font-size: 1rem;
+      }
+
+      .profile-main {
+        padding-top: 32px;
+        padding-bottom: 42px;
+      }
+
+      .profile-layout {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .info-section,
+      .info-section.wide {
+        grid-column: 1;
+        padding: 23px;
+        border-radius: 17px;
+      }
     }
 
+    @media (max-width: 420px) {
+      .profile-photo.vishal {
+        width: 155px !important;
+        height: 155px !important;
+        min-width: 155px !important;
+        min-height: 155px !important;
+        max-width: 155px !important;
+        max-height: 155px !important;
+        flex-basis: 155px !important;
+      }
+
+      .profile-hero h1 {
+        font-size: 2.35rem;
+      }
+
+      .info-section {
+        padding: 19px;
+      }
+
+      .project-item {
+        padding: 17px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .info-section,
+      .contact-row a,
+      .back-link {
+        transition: none;
+      }
+    }
   </style>
-
 </head>
-
 
 <body>
 
-
-  <!-- =====================================
-       HEADER
-  ====================================== -->
-
+  <!-- Header -->
   <header class="site-header">
+    <nav class="navbar container" aria-label="Primary navigation">
 
-    <nav
-      class="navbar container"
-      aria-label="Primary navigation"
-    >
-
-      <a
-        class="brand"
-        href="index.html"
-      >
-
-        <span class="brand-mark">
-          Ge
-        </span>
-
-        <span>
-          MRV Engine<span class="brand-dot">.</span>
-        </span>
-
+      <a class="brand" href="index.html">
+        <span class="brand-mark">Ge</span>
+        <span>MRV Engine<span class="brand-dot">.</span></span>
       </a>
-
 
       <button
         class="menu-toggle"
@@ -192,378 +425,154 @@
         aria-expanded="false"
         aria-controls="primary-menu"
       >
-
         <span></span>
         <span></span>
         <span></span>
-
-        <span class="sr-only">
-          Toggle menu
-        </span>
-
+        <span class="sr-only">Toggle menu</span>
       </button>
 
-
-      <div
-        class="nav-links"
-        id="primary-menu"
-      >
-
-        <a href="index.html">
-          Home
-        </a>
-
-        <a href="index.html#story">
-          Our story
-        </a>
-
-        <a
-          class="active"
-          href="#profile"
-        >
-          Profile
-        </a>
-
+      <div class="nav-links" id="primary-menu">
+        <a href="index.html">Home</a>
+        <a href="index.html#story">Our story</a>
+        <a class="active" href="#profile">Profile</a>
       </div>
 
     </nav>
-
   </header>
 
-
-
-  <!-- =====================================
-       MAIN CONTENT
-  ====================================== -->
-
+  <!-- Main content -->
   <main id="profile">
 
-
-    <!-- =====================================
-         PROFILE HERO
-    ====================================== -->
-
+    <!-- Profile hero -->
     <section class="profile-hero">
-
-      <div
-        class="container profile-hero-inner reveal"
-      >
-
-
-        <!-- PROFILE PICTURE -->
+      <div class="container profile-hero-inner reveal">
 
         <div
           class="profile-photo vishal"
           aria-label="Profile photo of Vishal"
         >
-
           <img
             src="images/vishal.jpeg"
             alt="Vishal profile photo"
           >
-
         </div>
-
-
-
-        <!-- PROFILE INTRODUCTION -->
 
         <div>
+          <p class="eyebrow">02 / Developer · Explorer</p>
 
-          <p class="eyebrow">
-            02 / Developer · Explorer
-          </p>
-
-
-          <h1>
-            Vishal
-          </h1>
-
+          <h1>Vishal</h1>
 
           <p class="profile-intro">
-
             I enjoy building reliable systems and learning how
             the world works, one experiment at a time.
-
           </p>
-
         </div>
 
-
       </div>
-
     </section>
 
-
-
-    <!-- =====================================
-         PROFILE MAIN SECTION
-    ====================================== -->
-
+    <!-- Profile details -->
     <section class="profile-main container">
-
-
       <div class="profile-layout">
 
-
-        <!-- =====================================
-             ABOUT ME
-        ====================================== -->
-
-        <article
-          class="info-section wide reveal"
-        >
-
-          <h2>
-            About me
-          </h2>
-
+        <!-- About me -->
+        <article class="info-section wide reveal">
+          <h2>About me</h2>
 
           <p>
-
             I am a hands-on developer who enjoys taking a problem
             apart, understanding its shape, and putting it back
             together with care. I value simple solutions, useful
             feedback, and the magic of a thing that just works.
-
           </p>
-
         </article>
 
-
-
-        <!-- =====================================
-             EDUCATION
-        ====================================== -->
-
-        <article
-          class="info-section reveal"
-        >
-
-          <h2>
-            Education
-          </h2>
-
+        <!-- Education -->
+        <article class="info-section reveal">
+          <h2>Education</h2>
 
           <p>
-
-            <strong>
-              Bachelor of Technology
-            </strong>
-
+            <strong>Bachelor of Technology</strong>
             <br>
-
             Information Technology
-
             <br>
-
-            <span class="muted">
-              2023 — 2027
-            </span>
-
+            <span class="muted">2023 — 2027</span>
           </p>
-
         </article>
 
-
-
-        <!-- =====================================
-             SKILLS
-        ====================================== -->
-
-        <article
-          class="info-section reveal"
-        >
-
-          <h2>
-            Skills
-          </h2>
-
+        <!-- Skills -->
+        <article class="info-section reveal">
+          <h2>Skills</h2>
 
           <ul>
-
-            <li>
-              JavaScript
-            </li>
-
-            <li>
-              Web development
-            </li>
-
-            <li>
-              Git &amp; workflows
-            </li>
-
-            <li>
-              Testing
-            </li>
-
+            <li>JavaScript</li>
+            <li>Web development</li>
+            <li>Git &amp; workflows</li>
+            <li>Testing</li>
           </ul>
-
         </article>
 
-
-
-        <!-- =====================================
-             SELECTED PROJECT
-             ONLY ONE CURRENT PROJECT
-        ====================================== -->
-
-        <article
-          class="info-section wide reveal"
-        >
-
-          <h2>
-            Selected Project
-          </h2>
-
+        <!-- Selected project -->
+        <article class="info-section wide reveal">
+          <h2>Selected Project</h2>
 
           <div class="project-list">
-
-
             <div class="project-item">
-
-
-              <!-- PROJECT NAME -->
 
               <strong>
                 CleanTech: Predictive Green Energy MRV Engine
               </strong>
 
-
-              <!-- ONLY TWO LINES OF DESCRIPTION -->
-
               <span>
-
                 An AI-powered platform that measures renewable energy
                 generation and consumption while supporting MRV reporting.
-
               </span>
-
 
               <span>
-
                 It uses machine learning to forecast energy demand
                 and renewable generation for better energy management.
-
               </span>
 
-
             </div>
-
           </div>
-
         </article>
 
-
-
-        <!-- =====================================
-             HOBBIES
-        ====================================== -->
-
-        <article
-          class="info-section reveal"
-        >
-
-          <h2>
-            Hobbies
-          </h2>
-
+        <!-- Hobbies -->
+        <article class="info-section reveal">
+          <h2>Hobbies</h2>
 
           <p>
-
             Exploring new places, strategy games, reading science
             writing, and finding the best street food in town.
-
           </p>
-
         </article>
 
-
-
-        <!-- =====================================
-             CONTACT
-        ====================================== -->
-
-        <article
-          class="info-section reveal"
-        >
-
-          <h2>
-            Contact
-          </h2>
-
+        <!-- Contact -->
+        <article class="info-section reveal">
+          <h2>Contact</h2>
 
           <div class="contact-row">
-
-
-            <a
-              href="mailto:vishal@example.com"
-            >
-              Email me
-            </a>
-
-
-            <a
-              href="tel:+910000000000"
-            >
-              Call
-            </a>
-
-
+            <a href="mailto:vishal@example.com">Email me</a>
+            <a href="tel:+910000000000">Call</a>
           </div>
-
         </article>
-
 
       </div>
 
-
-
-      <!-- =====================================
-           BACK TO HOME
-      ====================================== -->
-
-      <a
-        class="back-link"
-        href="index.html"
-      >
-
+      <!-- Back to home -->
+      <a class="back-link" href="index.html">
         &larr; Back to home
-
       </a>
-
-
     </section>
-
   </main>
 
-
-
-  <!-- =====================================
-       FOOTER
-  ====================================== -->
-
+  <!-- Footer -->
   <footer class="site-footer">
-
     <div class="container footer-inner">
-
-
-      <span>
-        Ge MRV Engine.
-      </span>
-
-
-      <span>
-        &copy; 2027 MRV Engine
-      </span>
-
-
+      <span>Ge MRV Engine.</span>
+      <span>&copy; 2027 MRV Engine</span>
     </div>
-
   </footer>
 
-
 </body>
-
 </html>
