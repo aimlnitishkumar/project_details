@@ -7,4 +7,4 @@ View : https://project-details-view.vercel.app/
 
 ![Website Screenshot](image.png)
 
-Last Updated : 18-09-2026 19:38
+Last Updated : 08-10-2026 00:10
